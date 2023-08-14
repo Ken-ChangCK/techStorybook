@@ -1,9 +1,17 @@
-import { Button } from "./Button";
+import { Button } from "../components/Button/Button";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "Example/Button",
+  title: "Form/Button",
   component: Button,
+  decorators: [
+    (Story) => (
+      <div style={{ margin: "3em" }}>
+        {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
+        <Story />
+      </div>
+    ),
+  ],
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: "centered",
@@ -20,13 +28,13 @@ export default {
 export const Primary = {
   args: {
     primary: true,
-    label: "Button",
+    label: "Primary",
   },
 };
 
 export const Secondary = {
   args: {
-    label: "Button",
+    label: "Secondary",
   },
 };
 
