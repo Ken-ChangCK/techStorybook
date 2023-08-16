@@ -7,6 +7,7 @@ const config = {
     "@storybook/preset-create-react-app",
     "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
+    "@chakra-ui/storybook-addon",
   ],
   framework: {
     name: "@storybook/react-webpack5",
@@ -16,5 +17,18 @@ const config = {
     autodocs: "tag",
   },
   staticDirs: ["../public"],
+  features: {
+    emotionAlias: false,
+  },
+  webpackFinal: async (config) => {
+    config.module.rules.push({
+      test: /\.mjs$/,
+      include: /node_modules/,
+      type: "javascript/auto",
+    });
+
+    return config;
+  },
 };
+
 export default config;
